@@ -43,7 +43,7 @@
                 </div>
             </form>
             <div class="text-center text-sm text-gray-600">
-                Already have an account? <a href="login.html" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
+                Already have an account? <a href="/login" class="font-medium text-indigo-600 hover:text-indigo-500">Sign in</a>
             </div>
         </div>
     </div>

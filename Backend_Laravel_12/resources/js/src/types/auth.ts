@@ -3,6 +3,7 @@ import { User } from './user';
 export interface LoginPayload {
   email: string;
   password: string;
+  remember?: boolean;
 }
 
 export interface RegisterPayload {
@@ -13,13 +14,16 @@ export interface RegisterPayload {
 }
 
 export interface AuthResponse {
-  status: boolean;
+  status: boolean|number;
   message: string;
   token?: string;
-  user: User;
+  user: User|null;
+  data?: any;
+  errors?: Record<string, string[]>;
 }
 
 export interface AuthState {
   user: User | null;
   token: string | null;
+  isAuthenticated: boolean;
 }

@@ -8,24 +8,31 @@ const router = createRouter({
   history: createWebHistory(baseUrl),
   routes: [
     {
-        // path: '/login',
-        // name: 'Login',
-        // // component: loadView('auth/LoginPage')
-        // component: () => import('../pages/auth/LoginPage.vue')
-
         path: "/auth",
         name: "AuthLayout",
         component: () => import("../pages/auth/Layout.vue"),
         children: [
             {
-                path: "/register",
+                path: "register",
                 name: "Register",
                 component: () => import("../pages/auth/RegisterPage.vue"),
             },
             {
-                path: "/login",
+                path: "login",
                 name: "Login",
                 component: () => import("../pages/auth/LoginPage.vue"),
+            },
+        ],
+    },
+    {
+        path: "/admin",
+        name: "admin",
+        component: () => import("../layouts/Layout.vue"),
+        children: [
+            {
+                path: "dashboard",
+                name: "dashboard",
+                component: () => import("../pages/admin/DashboardPage.vue"),
             },
         ],
     },

@@ -1,17 +1,31 @@
 import apiClient from "./index";
+import type { AuthResponse, LoginPayload,RegisterPayload } from "@/types/auth";
 
-export const login = (credentials:{ email: string; password: string }) => {
+export const login2 = (credentials: LoginPayload) => {
     return apiClient.post('/auth/login', credentials);
 };
 
-export const register = (data:{ name: string; email: string; password: string; password_confirmation: string }) => {
-    return apiClient.post('/auth/register', data);
-};
+export async function login(payload: LoginPayload): Promise<AuthResponse> {
+    const response = await apiClient.post<AuthResponse>("/auth/login", payload);
+    // Optionally store token
+    if(response.data.token) {
+        localStorage.setItem("token", response.data.token);
+    }
+    // console.log(response);
+    return response.data;
+}
 
-export const logout = () => {
-    return apiClient.post('/auth/logout');
-};
+export async function register(payload: RegisterPayload): Promise<AuthResponse> {
+    const response = await apiClient.post<AuthResponse>("/auth/register", payload);
+    return response.data;
+}
 
-export const getUser = () => {
-    return apiClient.get('/auth/user');
-};
+export async function logout(): Promise<void> {
+    await apiClient.post("/auth/logout");
+    localStorage.removeItem("token");
+}
+
+export async function getUser(): Promise<AuthResponse> {
+    const response = await apiClient.get<AuthResponse>("/auth/user");
+    return response.data;
+}

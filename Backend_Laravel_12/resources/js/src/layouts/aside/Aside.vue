@@ -26,7 +26,7 @@ const sidebarMenus = ref<MenuItem[]>([
     {
         id: 1,
         title: "Dashboard",
-        route: "/dashboard",
+        route: "/admin/dashboard",
         icon: "icon-home4",
     },
     {
@@ -34,8 +34,8 @@ const sidebarMenus = ref<MenuItem[]>([
         title: "Users",
         icon: "icon-users",
         children: [
-            { id: 21, title: "All Users", route: "/users" },
-            { id: 22, title: "Roles", route: "/roles" },
+            { id: 21, title: "All Users", route: "/admin/users" },
+            { id: 22, title: "Roles", route: "/admin/roles" },
         ],
         isOpen: false,
     },
